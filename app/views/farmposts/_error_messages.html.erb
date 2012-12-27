@@ -1,0 +1,9 @@
+<% if !@farmpost.errors.blank? %>
+  <div id="error_explanation">
+    <ul>
+      <% @farmpost.errors.full_messages.each do |msg| %>
+        <li>* <%= msg %></li>
+    </ul>
+  </div>
+ <% end %>
+<% end %>

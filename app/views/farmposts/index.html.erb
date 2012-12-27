@@ -1,0 +1,40 @@
+<div align="center"><%= image_tag("logoHead.png") %></div>
+ <div class="content">
+  <div class="sepLogo"></div>
+    <div class="topmainBkg"></div>
+	  <div class="bottommainBkg"></div>
+		<div class="mainContent">
+		   <span style="float:right"><%= link_to "Log Out", destroy_user_session_path, :method => :delete, :style => 'color:white' %></span></br>
+		   <span style="float:right"><%= link_to "Explain", explain_path, :style => 'color:white' %></span>
+		   </br></br>
+		   <div align="center">
+		    <%= form_for(@farmpost) do |f| %>
+            <%= f.label :title %>
+            </br>
+            <%= f.text_field :title, :placeholder => "50 CHARACTERS MAX" %>
+            </br></br>
+            <%= f.label :Concept %>
+            </br>
+            <%= f.text_field :concept, :placeholder => "75 CHARACTERS MAX" %>
+            </br></br>
+            <%= f.label :tags %>
+            </br>
+            <%= f.text_field :tags, :placeholder => "100 CHARACTERS MAX"%>
+            </br></br>
+            <%= f.label :Target %>
+            </br>
+            <%= f.text_field :target, :placeholder => "NUMBER FROM 50-200" %>
+            </br></br>
+            <%= f.submit "GROW", class: "growbtn" %>
+            <%= render 'error_messages' %>
+            <% end %>
+            </div>
+          </div>
+        <div class="allFarmposts">
+            <p style="font-size: 1.2em">GROWING:<span class="fr"> <%= image_tag("voteexplanation.png") %> </span>
+            </p>
+          <ol>
+            <%= render @farmposts %>
+          </ol>  
+        </div>
+

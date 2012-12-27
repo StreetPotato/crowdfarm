@@ -1,0 +1,36 @@
+<li class="singleFarmpost" style="opacity: 1">
+  <div class="voteContainer">
+    <div class="voteButton" align="center"> 
+      <% if farmpost.votes.where(:user_id => current_user.id).blank? %>
+      <%= link_to(image_tag("upvote.png", alt: 'JOIN'), upvote_path(farmpost), :method => :post) %>
+      <% else %>
+      <%= link_to(image_tag("downvote.png", alt: 'BAIL'), downvote_path(farmpost), :method => :delete) %>
+      <% end %>
+    </div>
+    <div class="voteCount" align="center">
+      <sup><%= farmpost.votes_count %></sup>&frasl;<sub><%= farmpost.target %></sub>
+    </div>
+  </div>
+  <div class="farmpostContent">
+   <div>
+    <% if (current_user.id == farmpost.user_id) || current_user.admin? %>
+  	<%= link_to "delete", farmpost, method: :delete, class: 'fr' %>
+    <% end %>
+   </div>
+   <span class="highlight fl">TITLE:&nbsp;&nbsp;</span><%= farmpost.title %></span>
+   </br>
+   <div> 
+  	<% if current_user.admin? %>
+  	<%= link_to "view-emails", view_emails_path(farmpost), class: 'fr' %>
+    <% end %>
+   </div>
+   <span class="highlight fl">CONCEPT:&nbsp;&nbsp;</span>
+    <%= farmpost.concept %>
+   </br>
+   <span class="highlight fl">TAGS:&nbsp;&nbsp;</span>
+    <%= farmpost.tags %>
+   </br>
+   <span class="highlight fl">TARGET:&nbsp;&nbsp;</span>
+   <span><%= farmpost.target %></span>&nbsp;people
+  </div>
+</li>
