@@ -4,6 +4,7 @@ Farm::Application.routes.draw do
   match "downvote" => "farmposts#downvote"
   match "view_emails" => "farmposts#view_emails"
   match "explain" => "farmposts#explain"
+  match "grown" => "grown#path"
   get "/users/sign_out"
   resources :farmposts
   resources :votes

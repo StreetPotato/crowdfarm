@@ -15,14 +15,5 @@ class Farmpost < ActiveRecord::Base
 
   
   default_scope order: 'farmposts.votes_count DESC'
-  
-  def as_json(options={})
-    result = super({ :except => [:user_id, :created_at, :updated_at] })
-      if current_user.votes.where(:farmpost_id => self.id).any?
-        result['has_voted'] = 'true'
-      else
-         result['has_voted'] = 'false'
-      end
-  end
 
 end

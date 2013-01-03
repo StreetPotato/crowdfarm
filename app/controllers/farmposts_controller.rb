@@ -67,6 +67,9 @@ class FarmpostsController < ApplicationController
 
   def explain
   end
+  
+  def grown
+  end
 
   private
 
